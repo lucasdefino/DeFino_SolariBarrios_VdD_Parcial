@@ -1,18 +1,6 @@
 const mapaFetch = d3.json('barrios-caba.geojson')
-const dataFetch = d3.dsv(';', '147_01-07_enero.csv', d3.autoType)
+const dataFetch = d3.dsv(';', '147_01-07_enero2.csv', d3.autoType)
 
-let datafecha_ingreso = data(
-  d => d.fecha_ingreso
-)
-
-let datafecha_cierre = data(
-  d => d.fecha_cierre_contacto
-)
-
-
-let data_diferencia = data(
-  d => datafecha_cierre - datafecha_ingreso
-)
 
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
@@ -27,14 +15,19 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       scheme: 'blues',
     },
     marks: [
-      Plot.density(data, { x: 'lon', y: 'lat', fill: 'density',bandwidth: 15, thresholds: 30 }),
+      Plot.dot(data, { x: 'lon', y: 'lat', r: 'tiempo_de_cierre', fill: 'tiempo_de_cierre', opacity: 0.8,}),
       Plot.geo(barrios, {
         stroke: 'gray',
         title: d => `${d.properties.BARRIO}\n${d.properties.DENUNCIAS} denuncias`,
       }),
     ],
+
+    //r: {range: [0,10]},
   })
 
+
   /* Agregamos al DOM la visualización chartMap */
-  d3.select('#chart').append(() => chartMap)
+  d3.select('#chart').append(() => (chartMap))
+  //d3.select('#chart').append(() => chart2Map)
 })
+

@@ -1,5 +1,5 @@
 const mapaFetch = d3.json('barrios-caba.geojson')
-const dataFetch = d3.dsv(';', '147_01-07_enero.csv', d3.autoType)
+const dataFetch = d3.dsv(';', '147_01-07_enero2.csv', d3.autoType)
 
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
@@ -11,7 +11,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       domain: barrios, // Objeto GeoJson a encuadrar
     },
     color: {
-      scheme: 'blues',
+      scheme: 'oranges',
     },
     marks: [
       Plot.density(data, { x: 'lon', y: 'lat', fill: 'density',bandwidth: 15, thresholds: 30 }),
@@ -22,6 +22,25 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
     ],
   })
 
+
+  let chart2Map = Plot.plot({
+    // https://github.com/observablehq/plot#projection-options
+    projection: {
+      type: 'mercator',
+      domain: barrios, // Objeto GeoJson a encuadrar
+    },
+    color: {
+      //scheme: 'blues',
+    },
+    marks: [
+      Plot.dot(data, { x: 'lon', y: 'lat', r: 'tiempo_de_cierre', fill: (d => d.tiempo_de_cierre > 30 ? '#003300':'transparent'), opacity: 0.65,}),
+      
+    ],
+
+    r: {range: [0,15]},
+  })
+  
   /* Agregamos al DOM la visualización chartMap */
-  d3.select('#chart').append(() => chartMap)
+  var svg = d3.select('#chart').append(() => chartMap)
+  svg.append(() => chart2Map)
 })
