@@ -1,17 +1,13 @@
-d3.dsv(';', '147_vehiculos_mal_estacionados.csv', d3.autoType).then(data => {
-    console.log(data)
-  
-    let chart = Plot.plot({
-        marks: [
-          Plot.barY(data,
-            {
-              x: 'genero',
-              y: 'domicilio_altura',
-            }),
-        ],
-        x: { grid: true, line: true, nice: true, },
-        y: { grid: true, line: true, nice: true, },
-      })
+d3.csv('astronautas.csv', d3.autoType).then(data => {
 
-    d3.select('#chart').append(() => chart)
+  let chart = globe.plot({
+    width: 454,
+    height: 454,
+    projection: {
+      type: "azimuthal-equal-area",
+      rotate: [-10, -52],
+      domain: {type: "MultiPoint", coordinates: [[-16, 52], [42, 52], [10, 32], [10, 70]]}
+    }, marks: [Plot.frame()]
   })
+  d3.select('#chart').append(() => chart)
+})
