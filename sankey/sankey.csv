@@ -1,0 +1,17 @@
+from,to,value
+'First Class','Child',6
+'Second Class','Child',24
+'Third Class','Child',79
+'Crew','Child',0
+'First Class','Adult',319
+'Second Class','Adult',261
+'Third Class','Adult',627
+'Crew','Adult',885
+'Child','Female',45
+'Child','Male',64
+'Adult','Female',425
+'Adult','Male',1667
+'Female','Survived',344
+'Female','Perished',126
+'Male','Survived',367
+'Male','Perished',1364
