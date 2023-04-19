@@ -21,7 +21,30 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       }),
     ],
   })
+  
+  function Counter() {
+    this.sum = 0;
+  }
 
+  Counter.prototype.add = function(array) {
+    array.forEach(function(entry) {
+      this.sum += entry.tiempo_de_cierre;
+    }, this);
+  };
+
+  const reclamosPorBarrio = d3.group(data, d => d.domicilio_barrio) // crea un Map
+  console.log('reclamosPorBarrio', reclamosPorBarrio)
+  
+  /* A cada feature del mapa le agregamos la prop DENUNCIAS */
+  barrios.features.forEach(d => {
+    let nombreBarrio = d.properties.BARRIO
+    var obj = new Counter();
+    obj.add(reclamosPorBarrio.get(nombreBarrio));
+    let tiempoxBarrio = obj.sum 
+    d.properties.DENUNCIAS = tiempoxBarrio
+
+    //console.log(nombreBarrio + ': ' + Reclamos)
+  })
 
   let chart2Map = Plot.plot({
     // https://github.com/observablehq/plot#projection-options
@@ -33,11 +56,18 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       //scheme: 'blues',
     },
     marks: [
-      Plot.dot(data, { x: 'lon', y: 'lat', r: 'tiempo_de_cierre', fill: (d => d.tiempo_de_cierre > 30 ? '#003300':'transparent'), opacity: 0.65,}),
-      
+      Plot.dot(
+        barrios.features,
+        Plot.centroid({
+          r: d => d.properties.DENUNCIAS,
+          text: (d) => d.properties.BARRIO,
+          stroke: 'none',
+          fill: '#69b3a2'
+        })
+      )
     ],
 
-    r: {range: [0,15]},
+    r: {range: [0,20]},
   })
   
   /* Agregamos al DOM la visualización chartMap */
