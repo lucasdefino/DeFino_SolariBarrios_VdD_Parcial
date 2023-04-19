@@ -62,7 +62,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
           r: d => d.properties.DENUNCIAS,
           text: (d) => d.properties.BARRIO,
           stroke: 'none',
-          fill: '#69b3a2'
+          fill: '#274a46'
         })
       )
     ],

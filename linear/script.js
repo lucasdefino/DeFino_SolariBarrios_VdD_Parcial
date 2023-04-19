@@ -27,7 +27,7 @@ Promise.all([dataFetchE, dataFetchJ,dataFetchA]).then(([dataE, dataJ, dataA]) =>
       //Plot.areaY(datafilteredJ,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill:'red',curve:'basis'})),
       //Plot.lineY(datafilteredJ,Plot.groupX({y: "count"}, {x: "hora_redondeada",curve:'basis'})),
       
-      Plot.areaY(datafilteredJ,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill:'#69b3a2',curve:'basis', opacity: 0.6})),
+      Plot.areaY(datafilteredJ,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill: '#CF4D26',curve:'basis', opacity: 0.6})),
       Plot.lineY(datafilteredJ,Plot.groupX({y: "count"}, {x: "hora_redondeada",curve:'basis'})),
       Plot.ruleY([0])
      ],
@@ -35,12 +35,14 @@ Promise.all([dataFetchE, dataFetchJ,dataFetchA]).then(([dataE, dataJ, dataA]) =>
       axis: true
     },
     fy: {
-      axis: "right",
+      axis: null,
       label: null
     }, 
     x: {
+      //domain: d3.sort(datafilteredJ, (a, b) => d3.descending(a.hora_redondeado, b.hora_redondeado)).map(d => d.nombre),
       ticks: ['00:00:00','02:00:00','04:00:00','06:00:00','08:00:00','10:00:00','12:00:00','14:00:00','16:00:00','18:00:00','20:00:00','22:00:00','23:30:00',],
       axis: "bottom",
+      label:'',
       grid: true,      
     },
     })
@@ -58,28 +60,31 @@ Promise.all([dataFetchE, dataFetchJ,dataFetchA]).then(([dataE, dataJ, dataA]) =>
         y: 'domicilio_barrio',
       },
       marks: [
-        Plot.areaY(datafilteredE,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill:'red',curve:'basis', opacity: 0.6})),
+        Plot.areaY(datafilteredE,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill:'#BDD076',curve:'basis', opacity: 0.6})),
         Plot.lineY(datafilteredE,Plot.groupX({y: "count"}, {x: "hora_redondeada",curve:'basis'})),
         
         //Plot.areaY(datafilteredE,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill:'#69b3a2',curve:'basis'})),
         //Plot.lineY(datafilteredE,Plot.groupX({y: "count"}, {x: "hora_redondeada",curve:'basis'})),
-        Plot.ruleY([0])
+        //Plot.ruleY([0])
        ],
       grid: true,
       nice: true,
       zero: true,
+      start: true,
       y: {
+        zero:true,
         axis: null
       },
       fy: {
-        axis: "right",
+        axis: null,
         label: null
       }, 
       x: {
         ticks: [],
         axis: "bottom",
         grid: true,
-        nice:true 
+        nice:true,
+        label:''
       },
       })
       
@@ -100,7 +105,7 @@ Promise.all([dataFetchE, dataFetchJ,dataFetchA]).then(([dataE, dataJ, dataA]) =>
           //Plot.areaY(datafilteredJ,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill:'red',curve:'basis'})),
           //Plot.lineY(datafilteredJ,Plot.groupX({y: "count"}, {x: "hora_redondeada",curve:'basis'})),
           
-          Plot.areaY(datafilteredA,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill:'orange',curve:'basis',opacity: 0.6})),
+          Plot.areaY(datafilteredA,Plot.groupX({y: "count"}, {x: "hora_redondeada",fill:'#15748E',curve:'basis',opacity: 0.6})),
           Plot.lineY(datafilteredA,Plot.groupX({y: "count"}, {x: "hora_redondeada",curve:'basis'})),
           Plot.ruleY([0])
          ], 
@@ -118,8 +123,8 @@ Promise.all([dataFetchE, dataFetchJ,dataFetchA]).then(([dataE, dataJ, dataA]) =>
         },
         })
         
-    var svg = d3.select('#chart').append(() => chart)
+    var svg = d3.select('#chart').append(() => chart2)
     svg.append(() => chart3)
-    svg.append(() => chart2)
+    svg.append(() => chart)
 
 })
