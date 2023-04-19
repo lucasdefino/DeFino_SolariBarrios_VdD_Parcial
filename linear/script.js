@@ -1,6 +1,6 @@
-const dataFetchJ = d3.dsv(';', '147_15-21_junio2.csv', d3.autoType)
-const dataFetchE = d3.dsv(';', '147_01-07_enero8.csv', d3.autoType)
-const dataFetchA = d3.dsv(';', '147_18-24_agosto2.csv', d3.autoType)
+const dataFetchJ = d3.dsv(';', '147_15-21_junio20.csv', d3.autoType)
+const dataFetchE = d3.dsv(';', '147_01-07_enero80.csv', d3.autoType)
+const dataFetchA = d3.dsv(';', '147_18-24_agosto20.csv', d3.autoType)
 
 
 Promise.all([dataFetchE, dataFetchJ,dataFetchA]).then(([dataE, dataJ, dataA]) => {
