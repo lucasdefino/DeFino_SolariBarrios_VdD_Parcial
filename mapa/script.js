@@ -11,15 +11,23 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       domain: barrios, // Objeto GeoJson a encuadrar
     },
     color: {
-      scheme: 'oranges',
+      range: ['#1B2F37', '#E24D28'],
+      //
+      //#283137
     },
     marks: [
-      Plot.density(data, { x: 'lon', y: 'lat', fill: 'density',bandwidth: 15, thresholds: 30 }),
+      Plot.density(data, { x: 'lon', y: 'lat', fill: 'density', bandwidth: 15, thresholds: 8 }),
       Plot.geo(barrios, {
-        stroke: 'gray',
+        stroke: '#236865',
+        strokeWidth: 2,
+        opacity: 0.8,
         title: d => `${d.properties.BARRIO}\n${d.properties.DENUNCIAS} denuncias`,
       }),
+      
     ],
+    style: {
+      backgroundColor: '#1B2F37',
+    },
   })
   
   function Counter() {
@@ -61,14 +69,20 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         Plot.centroid({
           r: d => d.properties.DENUNCIAS,
           text: (d) => d.properties.BARRIO,
-          stroke: 'none',
-          fill: '#274a46'
+          opacity: 0.8,
+          fill: '#698b69',
+          stroke:'#8ab37f',
+          strokeWidth: 1.5,
         })
       )
     ],
+    style: {
+      backgroundColor: '#1B2F37',
+    },
 
     r: {range: [0,20]},
   })
+  
   
   /* Agregamos al DOM la visualización chartMap */
   var svg = d3.select('#chart').append(() => chartMap)
