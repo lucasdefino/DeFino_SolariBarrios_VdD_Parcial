@@ -21,7 +21,6 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         stroke: '#236865',
         strokeWidth: 2,
         opacity: 0.8,
-        title: d => `${d.properties.BARRIO}\n${d.properties.DENUNCIAS} denuncias`,
       }),
       
     ],
@@ -48,8 +47,9 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
     let nombreBarrio = d.properties.BARRIO
     var obj = new Counter();
     obj.add(reclamosPorBarrio.get(nombreBarrio));
-    let tiempoxBarrio = obj.sum 
-    d.properties.DENUNCIAS = tiempoxBarrio
+    let cantReclamos =  reclamosPorBarrio.get(nombreBarrio).length
+    let tiempopromedioxBarrio = obj.sum / cantReclamos
+    d.properties.DENUNCIAS = tiempopromedioxBarrio
 
     //console.log(nombreBarrio + ': ' + Reclamos)
   })
@@ -68,11 +68,32 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         barrios.features,
         Plot.centroid({
           r: d => d.properties.DENUNCIAS,
-          text: (d) => d.properties.BARRIO,
           opacity: 0.8,
           fill: '#698b69',
           stroke:'#8ab37f',
           strokeWidth: 1.5,
+        })
+      ),
+      Plot.text(
+        barrios.features,
+        Plot.centroid({
+          text: (d) => d.properties.BARRIO,
+          fill: "#E24D28",
+          //stroke: "#E24D28",
+          textAnchor: "bottom",
+          strokeWidth: 2,
+          filter: (d) => d.properties.DENUNCIAS > 17
+        })
+      ),
+      Plot.text(
+        barrios.features,
+        Plot.centroid({
+          text: (d) => d.properties.BARRIO,
+          fill: "currentColor",
+          stroke: "white",
+          textAnchor: "center",
+          dx: 4,
+          filter: (d) => d.properties.BARRIO == "VILLA URQUIZA" || d.properties.BARRIO == "BARRACAS" || d.properties.BARRIO == "CABALLITO" || d.properties.BARRIO == "VILLA PUEYRREDON"
         })
       )
     ],
@@ -80,7 +101,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       backgroundColor: '#1B2F37',
     },
 
-    r: {range: [0,20]},
+    r: {range: [0,15]},
   })
   
   
