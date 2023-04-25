@@ -5,6 +5,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
   /* Mapa Coroplético */
   let chartMap = Plot.plot({
+    marginRight: 20,
     // https://github.com/observablehq/plot#projection-options
     projection: {
       type: 'mercator',
@@ -55,6 +56,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   })
 
   let chart2Map = Plot.plot({
+    marginRight: 20,
     // https://github.com/observablehq/plot#projection-options
     projection: {
       type: 'mercator',
@@ -69,31 +71,73 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         Plot.centroid({
           r: d => d.properties.DENUNCIAS,
           opacity: 0.8,
-          fill: '#698b69',
-          stroke:'#8ab37f',
+          fill: d => d.properties.DENUNCIAS > 16 ? '#236865' : '#698b69',
+          //fill: '#698b69',
+          stroke: d => d.properties.DENUNCIAS > 16 ? '#2BA193' : '#8ab37f',
+          //stroke:'#8ab37f',
           strokeWidth: 1.5,
         })
       ),
+      
       Plot.text(
         barrios.features,
         Plot.centroid({
           text: (d) => d.properties.BARRIO,
-          fill: "#E24D28",
-          //stroke: "#E24D28",
-          textAnchor: "bottom",
-          strokeWidth: 2,
-          filter: (d) => d.properties.DENUNCIAS > 17
+          fill: "#2BA193",
+          stroke: "#1B2F37",
+          strokeWidth: 5,
+          textAnchor: "right",
+          dx: 35,
+          filter: (d) => d.properties.BARRIO == "NUÑEZ" || d.properties.BARRIO == "BOEDO" || d.properties.BARRIO == "BOCA"
         })
       ),
       Plot.text(
         barrios.features,
         Plot.centroid({
           text: (d) => d.properties.BARRIO,
-          fill: "currentColor",
-          stroke: "white",
-          textAnchor: "center",
-          dx: 4,
-          filter: (d) => d.properties.BARRIO == "VILLA URQUIZA" || d.properties.BARRIO == "BARRACAS" || d.properties.BARRIO == "CABALLITO" || d.properties.BARRIO == "VILLA PUEYRREDON"
+          fill: "#2BA193",
+          stroke: "#1B2F37",
+          strokeWidth: 5,
+          textAnchor: "right",
+          dx: 58,
+          filter: (d) => d.properties.BARRIO == "PUERTO MADERO"
+        })
+      ),
+      
+      Plot.text(
+        barrios.features,
+        Plot.centroid({
+          text: (d) => d.properties.BARRIO,
+          fill: "#8ab37f",
+          stroke: "#4D3734",
+          strokeWidth: 5,
+          textAnchor: "right",
+          dx: -40,
+          filter: (d) => d.properties.BARRIO == "BARRACAS" || d.properties.BARRIO == "CABALLITO"
+        })
+      ),
+      Plot.text(
+        barrios.features,
+        Plot.centroid({
+          text: (d) => d.properties.BARRIO,
+          fill: "#8ab37f",
+          stroke: "#1B2F37",
+          strokeWidth: 5,
+          textAnchor: "right",
+          dx: -54,
+          filter: (d) => d.properties.BARRIO == "VILLA URQUIZA"
+        })
+      ),
+      Plot.text(
+        barrios.features,
+        Plot.centroid({
+          text: (d) => d.properties.BARRIO,
+          fill: "#8ab37f",
+          stroke: "#1B2F37",
+          strokeWidth: 5,
+          textAnchor: "right",
+          dx: -60,
+          filter: (d) =>  d.properties.BARRIO == "VILLA PUEYRREDON"
         })
       )
     ],
