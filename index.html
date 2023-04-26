@@ -6,71 +6,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template Parcial</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
     </style>
     <style>
       body{
         font-family: 'Poppins', sans-serif;
+        font-weight: 300;
         justify-content: center;
         background-color: #1B2F37;
         color: #698b69;
       }
+      p{
+        width: 900px;
+        font-size: 15px;
+        text-align: center;
+      }
+      iframe{
+        align-items: center;
+      }
       h1{
         color: #8ab37f;
+        font-size: 35px;
+        font-weight: 500;
       }
       h2{
         color: #8ab37f;
+        font-size: 25px;
+        font-weight: 300;
       }
       h3{
         color: #8ab37f;
+        font-size: 25px;
+        font-weight: 500;
+        margin-bottom: 0px;
+      }
+      h4{
+        color: #E24D28;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: -30px;
       }
       svg{
+        display: flex;
         justify-content: center;
+        align-items: center;
       }
+      .month-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+      }
+      .circle {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 50px;
+        font-size: 14px;
+        margin-right: 7px;
+      }
+
+      .enero {
+        background-color: #8AB37F;
+        color: #8AB37F;
+      }
+
+      #enero{
+        color: #8AB37F;
+        font-weight: 500;
+      }
+
+      .agosto {
+        background-color: #236865;
+        color: #236865;
+      }
+
+      #agosto{
+        color: #236865;
+        font-weight: 500;
+      }
+
+      .junio {
+        background-color: #E24D28;
+        color: #E24D28;
+      }
+
+      #junio{
+        color: #E24D28;
+        font-weight: 500;
+      }
+
+      #caballito{
+        color: #E24D28;
+        font-weight: 500;
+        font-size: 20px;
+      }
+      #contenedor{
+        padding-top: 50px;
+        margin-left: 14%;
+        margin-right: 14%;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }   
     </style>
   </head>
   <body>
-    <section>
+    <center><object data="headerlacurva.svg" width="100%" height="150%"> </object></center>
+    <section id="contenedor">
       <center>
         <h1>Análisis del Sistema Único de Atención Ciudadana</h1>
-        <h3>Un recorrido por la eficiencia a través de los meses</h3>
+        <h2>Un recorrido por la eficiencia a través de los meses</h2>
+        <br>
         <br>
         
-
-      </center>
-        <h3>Enero </h3>
-        <h4>Primer acercamiento a los datos</h4>
+      
+        <h4>Enero</h4>
+        <h3>Primer acercamiento a los datos</h3>
+        <hr class="solid" width="700px" color="E24D28">
         <p>
             Para comenzar a observar la eficiencia del sistema de denuncias acudimos a los datos más antiguos del conjunto. Plasmamos sobre el mapa de la Ciudad de Buenos Aires la densidad de denuncias, superponiendo burbujas cuyos tamaños exponen el tiempo promedio de resolución de los casos.
-            <br>Resaltados en azul están los cuatro barrios donde el período de resolución es más extenso. Contrario a lo que suponíamos, notamos que los elevados tiempos de resolución no correlacionan con las zonas con mayor cantidad de denuncias. 
-            <br>Los sectores más densos: Villa Urquiza, Villa Pueyrredon, Caballito y Barracas, serán parámetro para lo que sigue del análisis.
-
+            Resaltados en azul están los cuatro barrios donde el período de resolución es más extenso. Contrario a lo que suponíamos, notamos que los elevados tiempos de resolución no correlacionan con las zonas con mayor cantidad de denuncias. 
+            Los sectores más densos: Villa Urquiza, Villa Pueyrredon, Caballito y Barracas, serán parámetro para lo que sigue del análisis.
         </p>
+        <br>
 
-        <iframe src="mapa/index.html" width="100%" height="700" frameborder="0"></iframe>
+        <div id="box"><iframe src="mapa/index.html" width="100%" height="700" frameborder="0"></iframe></div>
 
-        <h3>Junio</h3>
+        <br>
+        <h4>Junio</h4>
+        <h3>Enfoque en las zonas mas influyentes</h3>
+        <hr class="solid" width="700px" color="E24D28">
         <p>
             Es relevante entender en qué horarios los usuarios denuncian con mayor frecuencia para poder atender los casos con mayor rapidez. 
-            <br> Marcando la mitad de este recorrido, comparamos los datos de junio contra los de enero y agosto. Notamos que para Caballito, Villa Pueyrredon y Villa Urquiza, el comportamiento es similar para los tres meses: la cantidad de denuncias comienza a ascender a partir de las 8am. Sin embargo, cuando enfocamos en Barracas encontramos que durante el mes de junio hubo una cantidad significativa de denuncias a la madrugada.
-            <br> Es importante también notar que en Caballito la cantidad de denuncias en el mes de agosto sobrepasa considerablemente al resto. 
+            Marcando la mitad de este recorrido, comparamos los datos de junio contra los de enero y agosto. Notamos que para Caballito, Villa Pueyrredon y Villa Urquiza, el comportamiento es similar para los tres meses: la cantidad de denuncias comienza a ascender a partir de las 8am. Sin embargo, cuando enfocamos en Barracas encontramos que durante el mes de junio hubo una cantidad significativa de denuncias a la madrugada.
+            Es importante también notar que en Caballito la cantidad de denuncias en el mes de agosto sobrepasa considerablemente al resto. 
         </p>
 
-        <iframe src="linear copy/index.html" width="100%" height="660" frameborder="0"></iframe>
+        <br>
 
-        <h3>Agosto</h3>
+        <div class="month-container">
+          <div class="circle enero"></div>
+          <div id="enero">Enero</div>
+          <div style="width: 20px;"></div>
+          <div class="circle junio"></div>
+          <div id="junio">Junio</div>
+          <div style="width: 20px;"></div>
+          <div class="circle agosto"></div>
+          <div id="agosto">Agosto</div>
+        </div>
+
+        <div id="chart"></div><iframe src="linear copy/index.html" width="100%" height="660" frameborder="0"></iframe></div>
+
+        <h4>Agosto</h4>
+        <h3>Pongamos la lupa en Caballito</h3>
+        <hr class="solid" width="700px" color="E24D28">
         <p>
             Para finalizar este análisis tomamos otro factor clave del sistema de denuncias: el canal. Decidimos poner especial foco en el barrio de Caballito, donde la cantidad de denuncias en agosto fue mayor.
             Marcando el promedio de denuncias por canal, queda claro que la magnitud de denuncias en Caballito logró casi triplicar la media en todos los canales.
-            <br> Debemos destacar que los canales expuestos no son todos los existentes. Caballito logra estos números sin siquiera presentar denuncias por los canales Comuna, Operador UGIS y Mail 147.
+            Debemos destacar que los canales expuestos no son todos los existentes. Caballito logra estos números sin siquiera presentar denuncias por los canales Comuna, Operador UGIS y Mail 147.
         </p>
+        <br>
 
-        <iframe src="canal copy/index.html" width="100%" height="630" frameborder="0"></iframe>
-      
+        <div id="chart"></div><iframe src="canal copy/index.html" width="100%" height="420" frameborder="0"></iframe></div>
+
+        <div id="caballito">Caballito</div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </center>
     </section>
-    <hr>
+    <hr class="solid" width="1500px" color="E24D28">
+    <center>
     <p>Fuente: Conjunto de datos Sistema Único de Atención Ciudadana</p>
     <p>Autores: Lucas De Fino y Pilar Solari Barrios</p>
     <p>Metodología: Manipulamos el conjunto mediante Excel principalmente para filtrar los datos innecesarios y lograr un código más limpio. Usamos constantemente la función group para crear variables que permitan graficar facilmente. Además utilizamos el recurso de superponer charts para lograr la primera visualización y el recurso de facets para la segunda. Por último aprovechamos las funcionalidades de d3 para calcular las medias utilizadas en la tercera visualización. </p>
+    </center>
   </body>
 </html>

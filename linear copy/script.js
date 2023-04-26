@@ -3,9 +3,10 @@ const data = d3.dsv(';', 'graficojunio.csv', d3.autoType).then(data => {
   let chart = Plot.plot({
     
     //height:600,
-    width:1000,
+    width:1010,
     marginBottom:50,
-    marginRight:110,
+    marginRight:140,
+
     
     facet: {
       data:data,

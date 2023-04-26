@@ -5,6 +5,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
   /* Mapa Coroplético */
   let chartMap = Plot.plot({
+    marginLeft: 5,
     marginRight: 20,
     // https://github.com/observablehq/plot#projection-options
     projection: {
@@ -56,6 +57,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   })
 
   let chart2Map = Plot.plot({
+    marginLeft: 5,
     marginRight: 20,
     // https://github.com/observablehq/plot#projection-options
     projection: {

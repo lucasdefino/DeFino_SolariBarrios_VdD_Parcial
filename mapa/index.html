@@ -5,9 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mapa</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+      .dot {
+      float: left;
+      height: 30px;
+      width: 30px;
+      border-radius: 80%;
+      background-color: #236865;
+      stroke: #2BA193;
+    }
+    #leyenda {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      color: #236865;
+      z-index: 1;
+    }
+    svg{
+      font-family: 'Poppins', sans-serif;
+      z-index:0;
+    }
+    #chart{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    </style>
+    
   </head>
   <body>
     <div id="chart"></div>
+    
+    <div id="leyenda"><span class="dot"></span>‎ Barrios con mayor tiempo de cierre</div>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
